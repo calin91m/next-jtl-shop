@@ -18,7 +18,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) return notFound();
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="p-6 max-w-7xl flex-col flex">
       <div className="mt-6 mb-2">
         <Link href="/products">
           <Button variant="outline" className="flex items-center gap-2">
@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </Button>
         </Link>
       </div>
-      <Card className="hover:shadow-lg transition-shadow rounded-md">
+      <Card className="hover:shadow-lg transition-shadow rounded-md max-w-4xl">
         <CardHeader>
           <CardTitle>{product.name}</CardTitle>
         </CardHeader>
@@ -37,6 +37,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover rounded-md"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1500px) 50vw, 33vw"
             />
           </AspectRatio>
           <p className="text-sm text-muted-foreground mb-4">
