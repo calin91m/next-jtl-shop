@@ -1,10 +1,11 @@
 // app/products/page.tsx
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { getAllProducts } from "@/lib/products";
+import Image from "next/image";
 
 export default async function ProductsPage() {
   const products = await getAllProducts();
@@ -20,7 +21,7 @@ export default async function ProductsPage() {
             >
               <CardContent className="py-0 px-0 text-center ">
                 <AspectRatio ratio={3 / 4} className="bg-muted mb-4">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover rounded-sm"

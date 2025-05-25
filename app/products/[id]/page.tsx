@@ -5,6 +5,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/lib/products";
+import Image from "next/image";
 
 export default async function ProductPage({
   params,
@@ -31,7 +32,7 @@ export default async function ProductPage({
         </CardHeader>
         <CardContent>
           <AspectRatio ratio={3 / 4} className="bg-muted mb-4">
-            <img
+            <Image
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover rounded-md"
