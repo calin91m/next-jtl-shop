@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/general/Navbar";
 import { Footer } from "@/components/general/Footer";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,15 +30,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <div className="max-w-[1440px] p-4  min-h-screen items-center mx-auto">
-          {/*
+        <Suspense fallback={<div>Loading...</div>}>
+          <Navbar />
+          <div className="max-w-[1440px] p-4  min-h-screen items-center mx-auto">
+            {/*
             The main content area where children components will be rendered.
             This is where your pages will be displayed.
           */}
-          {children}
-        </div>
-        <Footer />
+            {children}
+          </div>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );
