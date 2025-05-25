@@ -8,11 +8,12 @@ import { getProductById } from "@/lib/products";
 import Image from "next/image";
 
 interface ProductPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProductById(Number(params.id));
+  const resolvedParams = await params;
+  const product = await getProductById(Number(resolvedParams.id));
 
   if (!product) return notFound();
 
