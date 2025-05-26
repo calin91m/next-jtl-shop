@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ShoppingCart } from "lucide-react";
@@ -48,7 +47,6 @@ export function Navbar() {
               <Link href={href}>{label}</Link>
             </Button>
           ))}
-
           <form onSubmit={handleSearch}>
             <Input
               type="text"

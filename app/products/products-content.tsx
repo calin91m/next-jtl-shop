@@ -47,7 +47,7 @@ export function ProductsPageContent() {
               <CardContent className="py-0 px-0 text-center">
                 <AspectRatio ratio={3 / 4} className="bg-muted mb-4">
                   <Image
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-full h-full object-cover rounded-sm"
                     fill
