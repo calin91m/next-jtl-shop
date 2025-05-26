@@ -5,6 +5,8 @@ import { Navbar } from "@/components/general/Navbar";
 import { Footer } from "@/components/general/Footer";
 import { Suspense } from "react";
 import { CartProvider } from "@/lib/cart-context";
+import { ToastProvider } from "@/components/general/ToastProvider";
+import CartDrawer from "@/components/general/CartDrawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +35,9 @@ export default function RootLayout({
       >
         <Suspense fallback={<div>Loading...</div>}>
           <CartProvider>
+            <ToastProvider />
             <Navbar />
+
             <div className="max-w-[1440px] p-4  min-h-screen items-center mx-auto">
               {/*
             The main content area where children components will be rendered.

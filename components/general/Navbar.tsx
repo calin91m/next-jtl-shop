@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import CartDrawer from "@/components/general/CartDrawer";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export function Navbar() {
   const searchParams = useSearchParams();
   const initialSearch = searchParams.get("q") ?? "";
   const [search, setSearch] = useState(initialSearch);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,8 +24,6 @@ export function Navbar() {
       router.push(`/products?q=${encodeURIComponent(search)}`);
     }
   };
-
-  const cartCount = 3;
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -57,16 +57,7 @@ export function Navbar() {
             />
           </form>
 
-          <Link href="/cart" className="relative">
-            <Button variant="ghost" size="icon">
-              <ShoppingCart className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
-          </Link>
+          <CartDrawer open={cartOpen} setOpen={setCartOpen} />
         </nav>
       </div>
     </header>

@@ -11,6 +11,7 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
+import { toast } from "sonner";
 
 type Product = {
   id: number;
@@ -92,6 +93,11 @@ export default function ClientProductPage({ product }: { product: Product }) {
                 name: product.name,
                 price: product.price,
                 quantity: 1,
+                color: selectedColor!,
+                size: selectedSize!,
+              });
+              toast.success("Added to cart", {
+                description: `${product.name} (${selectedColor}, ${selectedSize}) was added to your cart.`,
               });
             }}
           >
